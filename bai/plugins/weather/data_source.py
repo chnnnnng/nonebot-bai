@@ -13,7 +13,7 @@ async def get_weather_of_city(city: str) -> str:
     if citycode is None:
         return '呃，没有听说过这个地方🦢'
     else:
-        return get_weather_from_moji(citycode)
+        return city+","+get_weather_from_moji(citycode)
 
 
 def get_city_code_by_str(city: str) -> int:
