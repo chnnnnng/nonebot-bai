@@ -33,3 +33,4 @@ def get_weather_from_moji(city: int) -> str:
     wind = soup.find(class_='wea_about').find('em').get_text()
     tips = soup.find(class_='wea_tips').find('em').get_text()
     return f'温度{temperature}℃，{meteorological}，{humidity}，{wind}，{tips}'
+
