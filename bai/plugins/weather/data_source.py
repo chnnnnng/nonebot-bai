@@ -11,9 +11,9 @@ moji_api_get_weather_url = 'http://tianqi.moji.com/api/redirect/'
 async def get_weather_of_city(city: str) -> str:
     citycode = get_city_code_by_str(city)
     if citycode is None:
-        return '呃，没有听说过这个地方🦢'
+        return '呃，小柏孤陋寡闻，没有听说过这个地方🦢'
     else:
-        return city+","+get_weather_from_moji(citycode)
+        return city+"，"+get_weather_from_moji(citycode)
 
 
 def get_city_code_by_str(city: str) -> int:
