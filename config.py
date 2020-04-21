@@ -1,7 +1,7 @@
 from nonebot.default_config import *
 
 #配置超级用户
-SUPERUSERS = {5965522060}
+SUPERUSERS = {59655220600}
 
 #命令起始符
 COMMAND_START = {'', '/', '!', '／', '！'}
