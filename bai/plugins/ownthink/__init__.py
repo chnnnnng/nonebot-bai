@@ -58,7 +58,7 @@ async def call_ownthink_api(session: CommandSession, text: str) -> Optional[str]
 
     group_unique_id = context_id(session.ctx, mode='group', use_hash=False)
     if group_unique_id:
-        payload['userId'] = group_unique_id
+        payload['userid'] = group_unique_id
     print(payload)
 
     try:
@@ -73,7 +73,10 @@ async def call_ownthink_api(session: CommandSession, text: str) -> Optional[str]
                 if resp_payload['message'] == 'success':
                     if resp_payload['data']['type'] == 5000:
                         # 返回文本类型的回复
-                        return resp_payload['data']['info']['text']
+                        ret = resp_payload['data']['info']['text']
+                        for k, v in session.bot.config.OWNTHINK_REPLACE_WORDS.items():
+                            ret = ret.replace(k, v)
+                        return ret
     except (aiohttp.ClientError, json.JSONDecodeError, KeyError):
         # 抛出上面任何异常，说明调用失败
         return None

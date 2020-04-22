@@ -15,3 +15,9 @@ NICKNAME = {'小柏', '小白', '陈小柏', '陈小白', '爸爸', '爷爷'}
 
 #ownthink Appid
 OWNTHINK_APPID = 'b3ba79e8367cdcdfbaa2363c6d7c219c'
+
+
+#Ownthink现阶段不能识别Appid，因此要手动替换部分字符
+OWNTHINK_REPLACE_WORDS = {
+    '小思': '小柏'
+}
