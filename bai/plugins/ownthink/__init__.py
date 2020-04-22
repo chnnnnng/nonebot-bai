@@ -59,6 +59,7 @@ async def call_ownthink_api(session: CommandSession, text: str) -> Optional[str]
     group_unique_id = context_id(session.ctx, mode='group', use_hash=False)
     if group_unique_id:
         payload['userId'] = group_unique_id
+    print(payload)
 
     try:
         # 使用 aiohttp 库发送最终的请求
