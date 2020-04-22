@@ -70,10 +70,9 @@ async def call_ownthink_api(session: CommandSession, text: str) -> Optional[str]
 
                 resp_payload = json.loads(await response.text())
                 if resp_payload['message'] == 'success':
-                    for data in resp_payload['data']:
-                        if data['type'] == 5000:
-                            # 返回文本类型的回复
-                            return data['info']['text']
+                    if resp_payload['data']['type'] == 5000:
+                        # 返回文本类型的回复
+                        return resp_payload['data']['info']['text']
     except (aiohttp.ClientError, json.JSONDecodeError, KeyError):
         # 抛出上面任何异常，说明调用失败
         return None

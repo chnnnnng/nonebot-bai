@@ -6,5 +6,8 @@ if __name__ == '__main__':
         'appid':'b3ba79e8367cdcdfbaa2363c6d7c219c'
     }
     res = requests.post('https://api.ownthink.com/bot',data=payload)
-    j = json.loads(res.text)
-    print(j)
+    resp_payload = json.loads(res.text)
+    if resp_payload['message'] == 'success':
+        if  resp_payload['data']['type']== 5000:
+            # 返回文本类型的回复
+            print(resp_payload['data']['info']['text'])
