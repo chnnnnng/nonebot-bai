@@ -52,8 +52,8 @@ async def call_ownthink_api(session: CommandSession, text: str) -> Optional[str]
     # 构造请求数据
     payload = {
         'spoken':  text,
-        'apiKey': session.bot.config.OWNTHINK_APPID,
-        'userId': context_id(session.ctx, use_hash=False)
+        'appid': session.bot.config.OWNTHINK_APPID,
+        'userid': context_id(session.ctx, use_hash=False)
     }
 
     group_unique_id = context_id(session.ctx, mode='group', use_hash=False)
