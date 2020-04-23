@@ -1,8 +1,9 @@
 import os
-import threading
+import sys
 from os import path
 
 import nonebot
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 bot = nonebot.get_bot()  # 在此之前必须已经 init
 
@@ -22,8 +23,6 @@ async def update():
     try:
         return 'OK'
     finally:
-        T = threading.Thread(target=restart())
-        T.setDaemon(True)
-        T.start()
-        T.join()
+        python = sys.executable
+        os.execl(python, python,path.join(path.dirname(__file__),'restart.py'))
 
