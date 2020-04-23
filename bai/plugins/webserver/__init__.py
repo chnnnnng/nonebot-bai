@@ -22,5 +22,5 @@ async def update():
     try:
         return 'OK'
     finally:
-        requests.post("127.0.0.1:94/update")
+        requests.post("http://127.0.0.1:94/update")
 
