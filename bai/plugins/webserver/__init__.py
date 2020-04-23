@@ -16,6 +16,6 @@ async def update():
     try:
         print("重启。。。。。。。")
         python = sys.executable
-        os.execl(python, python, *sys.argv)
+        os.execl(python, python, 'restart.py')
     finally:
         return 'OK'
