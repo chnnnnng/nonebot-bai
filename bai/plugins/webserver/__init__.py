@@ -19,4 +19,4 @@ async def update():
         return 'OK'
     finally:
         python = sys.executable
-        os.execl(python, python, path.join(path.dirname(__file__), 'restart.py'))
+        os.execl(python, 'python', path.join(path.dirname(__file__), 'restart.py'))
