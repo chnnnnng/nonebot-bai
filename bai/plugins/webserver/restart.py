@@ -4,6 +4,14 @@ import time
 from os import path
 import os, signal
 
+def kill(pid):
+    try:
+        a = os.kill(pid, signal.SIGKILL)
+        print('已杀死pid为%s的进程,　返回值是:%s' % (pid, a))
+    except OSError:
+        print('没有如此进程!!!')
+
+
 if __name__ == '__main__':
     out = os.popen("ps aux | grep xx.py").read()
     for line in out.splitlines():
@@ -11,7 +19,7 @@ if __name__ == '__main__':
         if 'bot.py' in line:
             pid = int(line.split()[1])
             print(pid)
-        os.kill(pid, signal.SIGKILL)
+            kill(pid)
     # time.sleep(2)
     os.system("ss -p")
     print("开始重启")
@@ -21,11 +29,3 @@ if __name__ == '__main__':
     ##os.system('pkill python')
     # python = sys.executable
     # os.execl(python, 'python', path.join(path.dirname(path.dirname(path.dirname(path.dirname(__file__)))), 'bot.py'))
-
-
-def kill(pid):
-    try:
-        a = os.kill(pid, signal.SIGKILL)
-        print('已杀死pid为%s的进程,　返回值是:%s' % (pid, a))
-    except OSError:
-        print('没有如此进程!!!')
