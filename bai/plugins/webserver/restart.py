@@ -13,7 +13,7 @@ def kill(pid):
 
 
 if __name__ == '__main__':
-    out = os.popen("ps aux | grep xx.py").read()
+    out = os.popen("ps aux | grep bot.py").read()
     for line in out.splitlines():
         print(line)
         if 'bot.py' in line:
