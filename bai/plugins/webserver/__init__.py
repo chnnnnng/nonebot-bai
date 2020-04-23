@@ -15,3 +15,4 @@ async def update():
     finally:
         requests.post("http://127.0.0.1:94/update")#向本机94端口的一个小服务发送post
 
+
