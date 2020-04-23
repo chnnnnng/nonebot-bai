@@ -1,5 +1,6 @@
 import os
 import sys
+from os import path
 
 import nonebot
 
@@ -16,6 +17,6 @@ async def update():
     try:
         print("重启。。。。。。。")
         python = sys.executable
-        os.execl(python, python, 'restart.py')
+        os.execl(python, python, path.join(path.dirname(__file__), 'restart.py'))
     finally:
         return 'OK'
