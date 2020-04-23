@@ -12,20 +12,20 @@ if __name__ == '__main__':
             pid = int(line.split()[1])
             print(pid)
         os.kill(pid, signal.SIGKILL)
-    #time.sleep(2)
+    # time.sleep(2)
     os.system("ss -p")
     print("开始重启")
-    #os.system('sleep 10s; print "REEEEEEEEEEEEEEEE"')
-    #os.system('ps -aux | grep bot.py | grep -v \"grep\" | awk \'{print $2}\' | xargs kill -9')
-    #os.system('sh ' + path.join(path.dirname(path.dirname(path.dirname(path.dirname(__file__)))), 'update.sh'))
+    # os.system('sleep 10s; print "REEEEEEEEEEEEEEEE"')
+    # os.system('ps -aux | grep bot.py | grep -v \"grep\" | awk \'{print $2}\' | xargs kill -9')
+    # os.system('sh ' + path.join(path.dirname(path.dirname(path.dirname(path.dirname(__file__)))), 'update.sh'))
     ##os.system('pkill python')
-    #python = sys.executable
-    #os.execl(python, 'python', path.join(path.dirname(path.dirname(path.dirname(path.dirname(__file__)))), 'bot.py'))
+    # python = sys.executable
+    # os.execl(python, 'python', path.join(path.dirname(path.dirname(path.dirname(path.dirname(__file__)))), 'bot.py'))
 
 
- def kill(pid):
-        try:
-            a = os.kill(pid, signal.SIGKILL)
-            print('已杀死pid为%s的进程,　返回值是:%s' % (pid, a))
-        except OSError:
-            print('没有如此进程!!!')
+def kill(pid):
+    try:
+        a = os.kill(pid, signal.SIGKILL)
+        print('已杀死pid为%s的进程,　返回值是:%s' % (pid, a))
+    except OSError:
+        print('没有如此进程!!!')
