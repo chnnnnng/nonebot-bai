@@ -15,7 +15,6 @@ async def admin():
 @bot.server_app.route('/update')
 async def update():
     try:
-        print("重启。。。。。。。")
         return 'OK'
     finally:
         os.system('sh ' + path.join(path.dirname(path.dirname(path.dirname(path.dirname(__file__)))), 'update.sh'))
