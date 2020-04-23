@@ -1,5 +1,6 @@
 import nonebot
 import requests
+from .main import login
 
 bot = nonebot.get_bot()  # 在此之前必须已经 init
 
