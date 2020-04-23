@@ -14,7 +14,8 @@ async def admin():
 @bot.server_app.route('/update')
 async def update():
     try:
+        print("重启。。。。。。。")
         python = sys.executable
         os.execl(python, python, *sys.argv)
-    finally:
+finally:
         return 'OK'
