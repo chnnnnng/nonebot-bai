@@ -1,9 +1,8 @@
 import os
-import sys
 from os import path
 
 import nonebot
-from apscheduler.schedulers.blocking import BlockingScheduler
+import requests
 
 bot = nonebot.get_bot()  # 在此之前必须已经 init
 
@@ -23,6 +22,5 @@ async def update():
     try:
         return 'OK'
     finally:
-        python = sys.executable
-        os.execl(python, python,path.join(path.dirname(__file__),'restart.py'))
+        requests.post("127.0.0.1:94/update")
 
