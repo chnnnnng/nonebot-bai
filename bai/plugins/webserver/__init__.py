@@ -1,5 +1,5 @@
 import os
-import sys
+import threading
 from os import path
 
 import nonebot
@@ -13,9 +13,17 @@ async def admin():
     return 'QBot管理页面'
 
 
+def restart():
+    os.system('sh ' + path.join(path.dirname(path.dirname(path.dirname(path.dirname(__file__)))), 'update.sh'))
+
+
 @bot.server_app.route('/update', methods=['POST'])
 async def update():
     try:
         return 'OK'
     finally:
-        os.system('sh ' + path.join(path.dirname(path.dirname(path.dirname(path.dirname(__file__)))), 'update.sh'))
+        T = threading.Thread(target=restart())
+        T.setDaemon(True)
+        T.start()
+        T.join()
+
