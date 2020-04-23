@@ -6,6 +6,7 @@ import asyncio
 
 if __name__ == '__main__':
     #time.sleep(2)
+    os.system("ss -p")
     print("开始重启")
     #os.system('sleep 10s; print "REEEEEEEEEEEEEEEE"')
     #os.system('ps -aux | grep bot.py | grep -v \"grep\" | awk \'{print $2}\' | xargs kill -9')
