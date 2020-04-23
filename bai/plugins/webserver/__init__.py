@@ -18,6 +18,4 @@ async def update():
         print("重启。。。。。。。")
         return 'OK'
     finally:
-        #python = sys.executable
-        #os.execl(python, 'python', path.join(path.dirname(__file__), 'restart.py'))
         os.system('sh ' + path.join(path.dirname(path.dirname(path.dirname(path.dirname(__file__)))), 'update.sh'))
