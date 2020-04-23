@@ -17,5 +17,5 @@ async def update():
         print("重启。。。。。。。")
         python = sys.executable
         os.execl(python, python, *sys.argv)
-finally:
+    finally:
         return 'OK'
