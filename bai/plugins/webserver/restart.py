@@ -6,7 +6,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 def x():
     sched = BlockingScheduler()
-    sched.add_job(xx, 'interval', seconds=4)
+    sched.add_job(xx, 'interval', seconds=5)
     sched.start()
 
 
