@@ -1,9 +1,11 @@
 import nonebot
 import requests
+from jinja2 import PackageLoader,Environment
 from .main import login
 
 bot = nonebot.get_bot()  # 在此之前必须已经 init
-bot.server_app.create_global_jinja_loader()
+
+env = Environment(loader=PackageLoader('webserver','templates'))
 
 #热更新借口，向此接口发送POST请求即可重启
 @bot.server_app.route('/update', methods=['POST'])
