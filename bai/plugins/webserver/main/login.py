@@ -15,4 +15,4 @@ async def login():
     templateEnv = jinja2.Environment(loader=templateLoader)
     TEMPLATE_FILE = "login.html"
     template = templateEnv.get_template(TEMPLATE_FILE)
-    return await template.render()  # 渲染
+    return template.render()  # 渲染
