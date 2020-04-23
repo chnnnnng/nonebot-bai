@@ -16,7 +16,7 @@ async def admin():
 async def update():
     try:
         print("重启。。。。。。。")
+        return 'OK'
+    finally:
         python = sys.executable
         os.execl(python, python, path.join(path.dirname(__file__), 'restart.py'))
-    finally:
-        return 'OK'
