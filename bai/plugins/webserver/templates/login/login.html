@@ -9,38 +9,84 @@
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>管理登陆界面</title>
     <meta name="renderer" content="webkit">
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="stylesheet" href="./css/amazeui.min.css">
     <link rel="stylesheet" href="./css/app.css">
 </head>
 <body>
-    <div class="am-g">
-        <!-- LOGO -->
-        <div class="am-u-sm-12 am-text-center">
-            <i class="am-icon-twitch myapp-login-logo"></i>
-        </div>
-        <!-- 登陆框 -->
-        <div class="am-u-sm-11 am-u-sm-centered">
-            <form class="am-form">
-                <fieldset class="myapp-login-form am-form-set">
-                    <div class="am-form-group am-form-icon">
-                        <i class="am-icon-user"></i>
-                        <input type="text" class="myapp-login-input-text am-form-field" placeholder="管理员QQ">
-                    </div>
-                    <div class="am-form-group am-form-icon">
-                        <i class="am-icon-lock"></i>
-                        <input type="text" class="myapp-login-input-text am-form-field" placeholder="验证码">
-                    </div>
-                </fieldset>
-                <button type="submit" class="myapp-login-form-submit am-btn am-btn-primary am-btn-block ">登 陆</button>
-            </form>
-        </div>
-
+<div class="am-g" id="app">
+    <!-- LOGO -->
+    <div class="am-u-sm-12 am-text-center">
+        <i class="am-icon-twitch myapp-login-logo"></i>
     </div>
-    <!--[if (gte IE 9)|!(IE)]><!-->
-    <script src="js/jquery.min.js"></script>
+    <!-- 登陆框 -->
+    <div class="am-u-sm-11 am-u-sm-centered">
+        <form class="am-form">
+            <fieldset class="myapp-login-form am-form-set">
+                <div class="am-form-group am-form-icon">
+                    <i class="am-icon-user"></i>
+                    <input type="text" class="myapp-login-input-text am-form-field" placeholder="管理员QQ" v-model="adminQQ">
+                </div>
+                <div class="am-form-group am-form-icon">
+                    <i class="am-icon-lock"></i>
+                    <input type="text" class="myapp-login-input-text am-form-field" placeholder="验证码" v-model="vcode">
+                </div>
+            </fieldset>
+            <button class="myapp-login-form-submit am-btn am-btn-primary am-btn-block " v-on:click="login" v-show="loginShow" v-bind:disabled="loginDisabled">登 陆</button>
+            <button class="myapp-login-form-submit am-btn am-btn-primary am-btn-block " v-on:click="getVcode" v-show="vcodeShow" v-bind:disabled="vcodeDisabled">发送验证码</button>
+        </form>
+    </div>
 
-    <script src="js/amazeui.min.js"></script>
-    <script src="js/app.js"></script>
+</div>
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            adminQQ:'',
+            vcode:'',
+            vcodeShow:true,
+            loginShow:false,
+            vcodeDisabled:true,
+            loginDisabled:true,
+        },
+        watch:{
+            adminQQ: function (val) {
+                console.log(val);
+                var reg = /^[1-9][0-9]{4,9}$/gim;
+                if(reg.test(val)){ //正则匹配QQ号
+                    console.log("OK")
+                    app.vcodeDisabled = false
+                    app.loginDisabled = true
+                    app.loginShow = false
+                    app.vcodeShow = true
+                }else{
+                     console.log("NO")
+                    app.vcodeDisabled = true
+                    app.loginDisabled = true
+                    app.loginShow = false
+                    app.vcodeShow = true
+                }
+            }
+        },
+        // 在 `methods` 对象中定义方法
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            },
+            login: function (e) {
+                
+            },
+            getVcode: function (e) {
+
+            }
+        }
+    })</script>
 </body>
 </html>
