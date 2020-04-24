@@ -11,7 +11,7 @@ bot.server_app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 
 
 @bot.server_app.route('/', methods=['GET'])
-async def login():
+async def home():
     if 'adminqq' in session:
         return redirect(url_for('admin'))
     else:
