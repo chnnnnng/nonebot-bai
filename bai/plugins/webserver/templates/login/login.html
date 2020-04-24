@@ -44,7 +44,7 @@
 
 </div>
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
 <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
 <script>
     var app = new Vue({
@@ -92,7 +92,7 @@
             getVcode: function (e) {
                 console.log("GETTING VC")
                 axios
-                    .post('/',{
+                    .post(document.URL,{
                         'action':'get',
                         'qq':app.adminQQ
                     })
