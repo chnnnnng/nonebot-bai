@@ -12,5 +12,5 @@ async def login():
         template = common.getTemplate('login')
         return template.render()  # 渲染
     else:
-        bot.send_private_msg(user_id=596552206, message='您的验证码是：')
+        await bot.send_private_msg(user_id=596552206, message='您的验证码是：')
         return "OK"
