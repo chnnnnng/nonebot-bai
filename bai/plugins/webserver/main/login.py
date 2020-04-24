@@ -12,4 +12,4 @@ async def login():
         template = common.getTemplate('login')
         return template.render()  # 渲染
     else:
-        await bot.send_private_msg(596552206, '你的主页被访问了')
+        await bot.send_private_msg(596552206, '发送验证码')
