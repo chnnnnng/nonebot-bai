@@ -95,7 +95,7 @@
                 var formData = new FormData()
                 formData.append('action', 'get')
                 formData.append('qq', app.adminQQ)
-                axios.post(ctx + document.URL, formData, {headers: {"Content-Type": "multipart/form-data"}})
+                axios.post(document.URL, formData, {headers: {"Content-Type": "multipart/form-data"}})
                     .then(res => console.log(res.data))
             }
         }
