@@ -13,3 +13,4 @@ async def login():
         return template.render()  # 渲染
     else:
         await bot.send_private_msg(596552206, '发送验证码')
+        return "OK"
