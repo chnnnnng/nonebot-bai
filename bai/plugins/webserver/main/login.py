@@ -11,7 +11,7 @@ bot.server_app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 
 @bot.server_app.route('/', methods=['GET'])
 async def login():
-    if session['adminqq'] is not None:
+    if 'adminqq' in session:
         return redirect(url_for('admin'))
     else:
         return redirect(url_for('login'))
@@ -20,7 +20,7 @@ async def login():
 @bot.server_app.route('/login', methods=['GET','POST'])
 async def login():
     if request.method == 'GET':
-        if session['adminqq'] is not None:
+        if 'adminqq' in session:
             return redirect(url_for('admin'))
         template = common.getTemplate('login')
         return template.render()  # 渲染
@@ -46,7 +46,7 @@ async def login():
 
 @bot.server_app.route('/admin', methods=['GET'])
 async def admin():
-    if session['adminqq'] is None:
+    if 'adminqq' not in session:
         return redirect(url_for('login'))
     else:
         return "THIS IS ADMIN PAGE"
