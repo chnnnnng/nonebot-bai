@@ -1,4 +1,7 @@
+import datetime
+
 import nonebot
+import pytz
 from quart import request
 
 from . import common
@@ -12,5 +15,12 @@ async def login():
         template = common.getTemplate('login')
         return template.render()  # 渲染
     else:
-        await bot.send_private_msg(user_id=596552206, message='您的验证码是：')
-        return "OK"
+        if request.form['action'] == 'get':
+            user = request.form['qq']
+            now = datetime.now(pytz.timezone('Asia/Shanghai'))
+            vc = str(int(user[0:5])*int(now.minute)*int(now.hour)*int(now.day)+1000)[0:5]
+            await bot.send_private_msg(user_id=596552206, message=f'【{vc}】是您的验证码，该验证码一分钟有效。您的账号正在尝试登陆管理页面，如非本人操作，请防范有关风险。')
+            return "OK"
+        else:
+            return "GET"
+
