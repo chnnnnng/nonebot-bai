@@ -36,7 +36,8 @@
             <button type="button" class="myapp-login-form-submit am-btn am-btn-primary am-btn-block " v-on:click="login"
                     v-show="loginShow" v-bind:disabled="loginDisabled">登 陆
             </button>
-            <button type="button" class="myapp-login-form-submit am-btn am-btn-primary am-btn-block " v-on:click="getVcode"
+            <button type="button" class="myapp-login-form-submit am-btn am-btn-primary am-btn-block "
+                    v-on:click="getVcode"
                     v-show="vcodeShow" v-bind:disabled="vcodeDisabled">发送验证码
             </button>
         </form>
@@ -91,15 +92,11 @@
             },
             getVcode: function (e) {
                 console.log("GETTING VC")
-                axios
-                    .post(document.URL,{
-                        'action':'get',
-                        'qq':app.adminQQ
-                    })
-                    .then(response => (this.info = response))
-                    .catch(function (error) { // 请求失败处理
-                        console.log(error);
-                    });
+                var formData = new FormData()
+                formData.append('action', 'get')
+                formData.append('qq', app.adminQQ)
+                axios.post(ctx + document.URL, formData, {headers: {"Content-Type": "multipart/form-data"}})
+                    .then(res => console.log(res.data))
             }
         }
     })</script>
