@@ -9,6 +9,7 @@ bot = nonebot.get_bot()  # 在此之前必须已经 init
 bot.server_app.config['SECRET_KEY'] = 'cxb'
 bot.server_app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 
+
 @bot.server_app.route('/', methods=['GET'])
 async def login():
     if 'adminqq' in session:
