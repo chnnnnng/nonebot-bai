@@ -26,14 +26,15 @@
                 <div class="am-form-group am-form-icon">
                     <i class="am-icon-user"></i>
                     <input type="text" class="myapp-login-input-text am-form-field" placeholder="管理员QQ"
-                           v-model="adminQQ">
+                           v-model="adminQQ" name="qq">
                 </div>
                 <div class="am-form-group am-form-icon">
                     <i class="am-icon-lock"></i>
-                    <input type="text" class="myapp-login-input-text am-form-field" placeholder="验证码" v-model="vcode">
+                    <input type="text" class="myapp-login-input-text am-form-field" placeholder="验证码" v-model="vcode"
+                           name="vc">
                 </div>
             </fieldset>
-            <button type="button" class="myapp-login-form-submit am-btn am-btn-primary am-btn-block " v-on:click="login"
+            <button type="submit" class="myapp-login-form-submit am-btn am-btn-primary am-btn-block " v-on:click="login"
                     v-show="loginShow" v-bind:disabled="loginDisabled">登 陆
             </button>
             <button type="button" class="myapp-login-form-submit am-btn am-btn-primary am-btn-block "
@@ -96,7 +97,12 @@
                 formData.append('action', 'get')
                 formData.append('qq', app.adminQQ)
                 axios.post(document.URL, formData, {headers: {"Content-Type": "multipart/form-data"}})
-                    .then(res => console.log(res.data))
+                    .then(res => {
+                        app.vcodeDisabled = true
+                        app.loginDisabled = false
+                        app.loginShow = true
+                        app.vcodeShow = false
+                    }).catch(e => alert("操作失败，请检查输入是否正确，或稍后再试。"))
             }
         }
     })</script>
