@@ -1,6 +1,7 @@
-from sqlalchemy import create_engine,Column,String,Integer
+from sqlalchemy import create_engine, Column, String, Integer, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
- 
+from sqlalchemy.orm import relationship
+
 DIALCT = "mysql"
 DRIVER = "pymysql"
 USERNAME = "root"
@@ -17,6 +18,14 @@ class admin(Base):
     __tablename__ = "admin"
     id = Column(Integer , primary_key=True , autoincrement=True)
     qq = Column(String(50) , nullable=False)
+    schedule = relationship('schedule')
+
+
+class schedule(Base):
+    __tablename__ = "schedule"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    creator = Column(Integer, ForeignKey('admin.id'))
+
  
 Base.metadata.drop_all()
 Base.metadata.create_all()
