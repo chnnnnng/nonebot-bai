@@ -6,7 +6,7 @@ from aiocqhttp.exceptions import Error as CQHttpError
 
 
 #早上提醒打卡
-@nonebot.scheduler.scheduled_job('cron', hour=8, minute=0)
+@nonebot.scheduler.scheduled_job('cron', hour=8)
 async def _():
     bot = nonebot.get_bot()
     try:
