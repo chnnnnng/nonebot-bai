@@ -13,7 +13,7 @@ hr_header = {'Cookie':'JSESSIONID=0B8741E0E4E237CB714CA05C1D470AE7','Content-Typ
 
 @on_command('healthreport', aliases=('健康上报', '打卡'))
 async def healthreport(session: CommandSession):
-    await session.send("好的，稍等")
+    await session.send("好的，稍等。")
     sleep(3)
     await session.send(dopost())
 
