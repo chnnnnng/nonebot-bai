@@ -1,5 +1,5 @@
 import datetime
-from asyncio import sleep
+from time import sleep
 
 import requests
 from nonebot import on_command, CommandSession
