@@ -23,6 +23,6 @@ async def _():
     now = datetime.now(pytz.timezone('Asia/Shanghai'))
     try:
         if now.hour in range(6, 23):
-            await bot.send_private_msg(user_id=596552206, message=f'等灯等登等噔～小柏为您准点报时：现在时间，{now.hour}时整，注意休息鸭^ω^')
+            await bot.send_private_msg(user_id=596552206, message=f'等灯等登等噔～现在时间，{now.hour}点整，注意休息鸭^ω^')
     except CQHttpError:
         pass
