@@ -15,7 +15,7 @@ login_header = {"Host":"auth.zjut.edu.cn","Connection":"keep-alive","Content-Len
 
 @on_command('healthreport', aliases=('健康上报', '打卡'))
 async def healthreport(session: CommandSession):
-    await session.send("好的，稍等2")
+    await session.send("好的，稍等")
     sess = requests.Session()
     cookie = getJsessionid(sess, '201906061102','chenyang20010703')
     hr_header['Cookie'] = cookie
