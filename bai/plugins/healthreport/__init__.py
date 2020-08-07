@@ -22,6 +22,13 @@ async def healthreport(session: CommandSession):
     await session.send(dopost())
 
 
+def doHealthReport():
+    sess = requests.Session()
+    cookie = getJsessionid(sess, '201906061102', 'chenyang20010703')
+    hr_header['Cookie'] = cookie
+    return dopost()
+
+
 def dopost():
     r = requests.post(hr_url+getTime(),data=hr_data,headers=hr_header)
     return r.text

@@ -2,6 +2,7 @@ from datetime import datetime
 
 import nonebot
 import pytz
+from .. import healthreport
 from aiocqhttp.exceptions import Error as CQHttpError
 
 
@@ -11,7 +12,9 @@ async def _():
     bot = nonebot.get_bot()
     try:
         await bot.send_private_msg(user_id=596552206, message='起床啦！记得健康上报')
-        await bot.send_private_msg(user_id=596552206, message='回复:"健康上报"或"打卡",我会自动为您打卡')
+        await bot.send_private_msg(user_id=596552206, message='正在为您健康上报...')
+        res = healthreport.doHealthReport()
+        await bot.send_private_msg(user_id=596552206, message=res)
     except CQHttpError:
         pass
 
