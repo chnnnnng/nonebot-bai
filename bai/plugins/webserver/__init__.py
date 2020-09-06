@@ -19,5 +19,5 @@ async def update():
 
 @bot.server_app.route('/send_msg_to_single_user', methods=['POST'])
 async def send_msg_to_single_user():
-    await bot.send_private_msg(user_id=request.form['who'], message=request.form['what'])
+    await bot.send_private_msg(user_id=(await request.form).get('who'), message=(await request.form).get('what'))
 
