@@ -1,5 +1,6 @@
 import nonebot
 import requests
+from quart import request
 from jinja2 import PackageLoader,Environment
 from .main import login
 
@@ -18,6 +19,5 @@ async def update():
 
 @bot.server_app.route('/send_msg_to_single_user', methods=['POST'])
 async def send_msg_to_single_user():
-    await bot.send_private_msg(user_id=requests.form['who'], message=requests.form['what'])
-
+    await bot.send_private_msg(user_id=request.form['who'], message=request.form['what'])
 
