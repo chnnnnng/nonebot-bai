@@ -17,7 +17,12 @@ async def update():
         requests.post("http://127.0.0.1:94/update")#向本机94端口的一个小服务发送post
 
 
-@bot.server_app.route('/send_msg_to_single_user', methods=['POST'])
-async def send_msg_to_single_user():
-    await bot.send_private_msg(user_id=(await request.form).get('who'), message=(await request.form).get('what'))
+@bot.server_app.route('/sendPrivateMsg', methods=['POST'])
+async def sendPrivateMsg():
+    try:
+        await bot.send_private_msg(user_id=(await request.form).get('who'), message=(await request.form).get('what'))
+        return "ok"
+    except:
+        return "error"
+
 
